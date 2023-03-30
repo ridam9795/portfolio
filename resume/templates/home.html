@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %} 
+{% block homeactive %} text-white {% endblock homeactive %}
+{% block body %}
+{% load static %}
+<div class="jumbotron" style="background-color: #070707">
+   <p class="text-center text-white"><b>HELLO, MY NAME IS RIDAM NAGAR</b></p>
+   <h3 class="display-6 text-center text-white">WELCOME TO MY PORTFOLIO</h3>
+   <hr class="my-4" />
+   <div class="text-center">
+      <a class="btn btn-danger btn-md" href="#recent-works" role="button">Learn more</a>
+      <a class="btn btn-danger btn-md" href="contact/" role="button">Get in touch</a>
+   </div>
+</div>
+<div class="container ">
+   <div class="jumbotron bg-dark">
+      <h3 class="text-white">ABOUT ME</h3>
+      <hr />
+      <div class="row ">
+         <div class="col-md-3 text-center">
+            <img src="{% static 'profile.jpg'%}" width="250px" height="250px"/>
+         </div>
+         <div class="col-md-9 my-2">
+            <p style="text-align: justify" class="text-white">
+               As a web developer, I have a passion for creating visually appealing,
+               functional, and secure websites and web applications. With my expertise
+               in HTML, CSS, JavaScript, Bootstarp, JQuery, React, and Django technologies, I can
+               develop powerful, high-performance websites and applications. I am also
+               experienced in integrating web applications with other services, as well
+               as optimizing websites for maximum performance. I keep up-to-date with
+               the latest web technologies and standards to ensure my work is always up
+               to date. On top of that, I am a problem solver, adept at testing and
+               debugging web applications. I am confident that my skillset and
+               experience can bring value to any organization.
+            </p>
+            <a  href="{% static 'RidamNagar_2yr_Experience.pdf' %}" class="text-white" style="text-decoration:none" download>
+               <button class="btn btn-danger">
+                  DOWNLOAD CV 
+            </a>
+            <svg
+               xmlns="http://www.w3.org/2000/svg"
+               width="16"
+               height="16"
+               fill="currentColor"
+               class="bi bi-download"
+               viewBox="0 0 16 16"
+               >
+            <path
+               d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+               />
+            <path
+               d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+               />
+            </svg>
+            </button>
+            </a>
+         </div>
+      </div>
+   </div>
+   <div class="jumbotron bg-dark">
+      <div class="skills">
+         <h3 class="text-white font-weight-bold">SKILLS</h3>
+         <hr style="border-color:black;border-width:4px" />
+         <div class="row my-3 justify-content-center">
+            {% for skill in skills %}
+            <h2 class="mx-2"> <span class="badge badge-danger">{{skill.name}}</span></h2>
+            {% comment %} 
+            <div class=" card col-md-3  col-sm-12 align-items-center my-3  mx-3" >
+               <img src="/media/{{skill.skillImage}}" class="my-3  mx-3" alt="python" height="225px" width="100%">
+            </div>
+            {% endcomment %}
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+   <div class="" >
+      <div class="Achivements">
+         <h3 class="font-weight-bold">ACHIEVEMENTS</h3>
+         <hr style="border-color:black;border-width:4px" />
+         <div class="row my-3 justify-content-center">
+            {% for achievement in achivements %}
+            <div class=" zoom col-md-3  col-sm-12 align-items-center my-4  mx-2" >
+               <a href="{{achievement.url}}" class="text-decoration-none" target="__blank">
+                  <img src="/media/{{achievement.certificate}}"  alt="{{achievement.name}}" height="100%" width="100%">
+                  <h5 class="text-monospace text-center my-1 text-white font-weight-bold text-uppercase" >{{achievement.name}}</h5>
+               </a>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+   <div id="recent-works" class="my-recent-works">
+      <h3 class="font-weight-bold">MY RECENT WORKS</h3>
+      <hr style="border-color:black;border-width:4px"/>
+      <div class="row my-3 justify-content-center container">
+         {% for project in projects %}
+         <div class=" my-3 imageContainer mx-3" >
+            <a href="{{project.url}}" class="text-decoration-none" target="__blank">
+               <img src="/media/{{project.project}}"  alt="{{project.name}}" height="100%" width="100%">
+               <h2 class="text-monospace text-center my-1 text-white font-weight-bold text-uppercase" >{{project.name}}</h2>
+               <button class="btn btn-outline-primary">Show full project</button>
+            </a>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+</div>
+</div>
+{% endblock body %}
