@@ -7,9 +7,12 @@ from django.contrib import messages
 # Create your views here.
 def home(request):
     skills=Skill.objects.all()
-    achivements=Achievement.objects.all()
+    achivements=Achievement.objects.all().order_by('-sno')
     projects=Project.objects.all()
     return render(request,'home.html',{'skills':skills,'achivements':achivements,'projects':projects})
+
+
+
 
 def contactMe(request):
     if request.method == "POST":
